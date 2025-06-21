@@ -2699,14 +2699,14 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // initializeProfile(); // Comentar esta linha temporariamente
             if (typeof initializeEditName === 'function') {
-    initializeEditName();
+    if (typeof initializeEditName === 'function') initializeEditName();
 } else {
     console.warn('initializeEditName não está definida ainda');
 }
-            initializeEditStatus();
-            initializeNameEffects();
-            initializeNameBanners();
-            initializeProfileDetail();
+            if (typeof initializeEditStatus === 'function') initializeEditStatus();
+            if (typeof initializeNameEffects === 'function') initializeNameEffects();
+            if (typeof initializeNameBanners === 'function') initializeNameBanners();
+            if (typeof initializeProfileDetail === 'function') initializeProfileDetail();
             console.log('✅ Todas as funções de perfil inicializadas com sucesso');
         } catch (error) {
             console.error('❌ Erro ao inicializar funções de perfil:', error);
