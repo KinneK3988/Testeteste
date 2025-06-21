@@ -2476,47 +2476,29 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('❌ Erro ao inicializar aplicação:', error);
             showNotification('Erro de conexão. Tente recarregar a página.', 'error');
         }
-    }
-
-    function bindUI() {
+    }    function bindUI() {
         console.log('🔧 Configurando event listeners...');
-          // Login
+        
+        // Login
         const loginForm = document.getElementById('login-form');
         if (loginForm) {
             loginForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const email = document.getElementById('email-input').value;
                 const password = document.getElementById('password-input').value;
-                if (!email || !password) {
-                    alert('Por favor, preencha todos os campos.');
-                    return;
-                }
-                currentUser = {
-                    email: email,
-                    name: email.split('@')[0],
-                    photoURL: null,
-                    isGuest: false
-                };
-                showMainApp();
+                handleLogin(e);
             });
             console.log('✅ Formulário de login configurado');
-        } else {
-            console.error('❌ Formulário de login não encontrado!');
         }
-          const guestBtn = document.getElementById('main-guest-login-btn');
-        if (guestBtn) {
-            guestBtn.addEventListener('click', function() {
-                currentUser = {
-                    email: 'convidado@7chat.com',
-                    name: 'Convidado',
-                    photoURL: null,
-                    isGuest: true
-                };
-                showMainApp();
+
+        // Login como convidado
+        const guestLoginBtn = document.getElementById('main-guest-login-btn');
+        if (guestLoginBtn) {
+            guestLoginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginAsGuest();
             });
             console.log('✅ Botão de convidado configurado');
-        } else {
-            console.error('❌ Botão de convidado não encontrado!');
         }
 
         // Navegação
@@ -2551,20 +2533,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target.id === 'test-btn') {
                 showNotification('Aplicativo funcionando perfeitamente!', 'info');
             }
-        });        // Inicializar busca
-        // initializeSearch(); // Função comentada temporariamente        // Inicializar foto do usuário
-        // initializeUserPhoto(); // Função comentada temporariamente
+        });
 
-        // Inicializar configurações
- // initializeSettings(); // Função comentada temporariamente
-
-        initializeProfile();
-        initializeEditName();
-        initializeEditStatus();
-        initializeNameEffects();
-        initializeNameBanners();
-        initializeProfileDetail();
-    }    // INICIALIZAR APLICAÇÃO
+        // Inicializar todas as funções de perfil APÓS configurar os event listeners básicos
+        try {
+            initializeProfile();
+            initializeEditName();
+            initializeEditStatus();
+            initializeNameEffects();
+            initializeNameBanners();
+            initializeProfileDetail();
+            console.log('✅ Todas as funções de perfil inicializadas com sucesso');
+        } catch (error) {
+            console.error('❌ Erro ao inicializar funções de perfil:', error);
+        }
+    }// INICIALIZAR APLICAÇÃO
     main();
 });
 
@@ -5110,22 +5093,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Atualizar botão
                 e.target.textContent = 'Enviado';
-                e.target.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                e.target.classList.add('bg-gray-600');
+                e.target.classList.remove('bg-blue-600', 'hover:bg-blue-700');                e.target.classList.add('bg-gray-600');
             }
         });
     }
-    
- 
-    
-    // Aguardar inicialização se necessário
-    if (!conversationManager.isInitialized) {
-        setTimeout(() => startChat(userName, userAvatar, userStatus), 500);
-        return;
-    }
-    
-    conversationManager.openChat(userName, userAvatar, userStatus);
-}
+});
 
 // Função para inicializar conversa quando aceita amizade
 function initializeConversationForFriend(friendName, friendAvatar = null) {
