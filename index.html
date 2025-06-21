@@ -2698,7 +2698,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Inicializar todas as funções de perfil APÓS configurar os event listeners básicos
         try {
             // initializeProfile(); // Comentar esta linha temporariamente
-            initializeEditName();
+            if (typeof initializeEditName === 'function') {
+    initializeEditName();
+} else {
+    console.warn('initializeEditName não está definida ainda');
+}
             initializeEditStatus();
             initializeNameEffects();
             initializeNameBanners();
