@@ -1,0 +1,456 @@
+/* ========================================
+   EFEITOS ESPECIAIS PARA NOMES - MODERNOS
+   ======================================== */
+
+.name-effect-rainbow {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #dda0dd, #ff9ff3);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbowMove 4s ease-in-out infinite;
+    font-weight: 600;
+}
+
+.name-effect-gold {
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700, #ffb347);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    animation: goldShine 3s ease-in-out infinite;
+    font-weight: 700;
+}
+
+.name-effect-neon {
+    color: #00ffff;
+    text-shadow: 
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 15px #00ffff,
+        0 0 20px #00ffff;
+    animation: neonGlow 2s ease-in-out infinite alternate;
+    font-weight: 600;
+}
+
+.name-effect-holographic {
+    background: linear-gradient(45deg, #ff0080, #0080ff, #80ff00, #ff8000, #8000ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographicShift 5s ease-in-out infinite;
+    font-weight: 700;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.name-effect-sunset {
+    background: linear-gradient(45deg, #ff9a56, #ff6b9d, #c44569, #f8b500);
+    background-size: 250% 250%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: sunsetFlow 4s ease-in-out infinite;
+    font-weight: 600;
+}
+
+.name-effect-crystal {
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: crystalShine 4s ease-in-out infinite;
+    font-weight: 700;
+    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.4));
+}
+
+.name-effect-fire {
+    background: linear-gradient(45deg, #ff4757, #ff3838, #ff6348, #ffa502, #ff7675);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fireFlicker 2s ease-in-out infinite;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(255, 71, 87, 0.7);
+}
+
+.name-effect-ocean {
+    background: linear-gradient(45deg, #00c9ff, #92fe9d, #00b4db, #0083b0, #74b9ff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: oceanWave 5s ease-in-out infinite;
+    font-weight: 600;
+    filter: drop-shadow(0 0 12px rgba(0, 201, 255, 0.4));
+}
+
+/* ========================================
+   ANIMAÇÕES DOS EFEITOS DE NOMES
+   ======================================== */
+
+@keyframes rainbowMove {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 50% 100%; }
+    75% { background-position: 0% 100%; }
+}
+
+@keyframes goldShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes neonGlow {
+    from { 
+        text-shadow: 
+            0 0 5px #00ffff,
+            0 0 10px #00ffff,
+            0 0 15px #00ffff,
+            0 0 20px #00ffff;
+    }
+    to { 
+        text-shadow: 
+            0 0 10px #00ffff,
+            0 0 20px #00ffff,
+            0 0 30px #00ffff,
+            0 0 40px #00ffff;
+    }
+}
+
+@keyframes holographicShift {
+    0% { background-position: 0% 50%; }
+    20% { background-position: 100% 50%; }
+    40% { background-position: 100% 0%; }
+    60% { background-position: 0% 0%; }
+    80% { background-position: 50% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes sunsetFlow {
+    0%, 100% { background-position: 0% 50%; }
+    33% { background-position: 100% 0%; }
+    66% { background-position: 0% 100%; }
+}
+
+@keyframes crystalShine {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 50% 0%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 100%; }
+}
+
+@keyframes fireFlicker {
+    0%, 100% { 
+        background-position: 0% 50%;
+        filter: brightness(1) saturate(1.2);
+    }
+    25% { 
+        background-position: 100% 30%;
+        filter: brightness(1.1) saturate(1.4);
+    }
+    50% { 
+        background-position: 80% 70%;
+        filter: brightness(0.9) saturate(1.1);
+    }
+    75% { 
+        background-position: 20% 20%;
+        filter: brightness(1.05) saturate(1.3);
+    }
+}
+
+@keyframes oceanWave {
+    0%, 100% { background-position: 0% 50%; }
+    20% { background-position: 80% 20%; }
+    40% { background-position: 100% 80%; }
+    60% { background-position: 20% 100%; }
+    80% { background-position: 0% 30%; }
+}
+
+/* ========================================
+   BANNERS DECORATIVOS PARA NOMES
+   ======================================== */
+
+.name-banner-heart-pink {
+    background: linear-gradient(45deg, #ff6b9d, #f093fb, #ff85c2);
+    background-size: 200% 200%;
+    animation: heartBannerMove 4s ease-in-out infinite;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 4px 0;
+    box-shadow: 0 2px 10px rgba(255, 107, 157, 0.4);
+}
+
+.name-banner-heart-pink::before {
+    content: '❤️ ✨ 💕 ⭐ ❤️ ✨ 💕 ⭐';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    opacity: 0.6;
+    animation: sparkleFloat 6s ease-in-out infinite;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+.name-banner-stars-gold {
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffb347);
+    background-size: 200% 200%;
+    animation: goldBannerShine 3s ease-in-out infinite;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 4px 0;
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+}
+
+.name-banner-stars-gold::before {
+    content: '⭐ ✨ 🌟 ⭐ ✨ 🌟 ⭐ ✨';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    opacity: 0.7;
+    animation: starsTwinkle 4s ease-in-out infinite;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+.name-banner-nature-green {
+    background: linear-gradient(45deg, #4ade80, #22c55e, #16a34a);
+    background-size: 200% 200%;
+    animation: natureBannerFlow 5s ease-in-out infinite;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 4px 0;
+    box-shadow: 0 2px 10px rgba(34, 197, 94, 0.4);
+}
+
+.name-banner-nature-green::before {
+    content: '🌿 🍃 🌱 🌿 🍃 🌱 🌿 🍃';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    opacity: 0.6;
+    animation: leavesSwing 6s ease-in-out infinite;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+.name-banner-tech-blue {
+    background: linear-gradient(45deg, #3b82f6, #1d4ed8, #1e40af);
+    background-size: 200% 200%;
+    animation: techBannerPulse 3s ease-in-out infinite;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 4px 0;
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+}
+
+.name-banner-tech-blue::before {
+    content: '💎 ⚡ 🔷 💎 ⚡ 🔷 💎 ⚡';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    opacity: 0.7;
+    animation: techGlow 4s ease-in-out infinite;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+.name-banner-romantic-purple {
+    background: linear-gradient(45deg, #a855f7, #9333ea, #7c3aed);
+    background-size: 200% 200%;
+    animation: romanticBannerFlow 4s ease-in-out infinite;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 4px 0;
+    box-shadow: 0 2px 10px rgba(168, 85, 247, 0.4);
+}
+
+.name-banner-romantic-purple::before {
+    content: '🌸 💜 🌺 🌸 💜 🌺 🌸 💜';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    opacity: 0.6;
+    animation: flowersBloom 5s ease-in-out infinite;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+.name-banner-galaxy-space {
+    background: linear-gradient(45deg, #4c1d95, #5b21b6, #6b21a8, #7c2d92);
+    background-size: 300% 300%;
+    animation: galaxyBannerMove 6s ease-in-out infinite;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 4px 0;
+    box-shadow: 0 2px 10px rgba(76, 29, 149, 0.4);
+}
+
+.name-banner-galaxy-space::before {
+    content: '🌌 🚀 ⭐ 🪐 🌌 🚀 ⭐ 🪐';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    opacity: 0.7;
+    animation: spaceFloat 8s ease-in-out infinite;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+/* O nome fica por cima do banner */
+.name-banner-heart-pink .user-name,
+.name-banner-stars-gold .user-name,
+.name-banner-nature-green .user-name,
+.name-banner-tech-blue .user-name,
+.name-banner-romantic-purple .user-name,
+.name-banner-galaxy-space .user-name {
+    position: relative;
+    z-index: 2;
+    font-weight: bold;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* ========================================
+   ANIMAÇÕES DOS BANNERS
+   ======================================== */
+
+@keyframes heartBannerMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes sparkleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-2px); }
+}
+
+@keyframes goldBannerShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes starsTwinkle {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes natureBannerFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes leavesSwing {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+}
+
+@keyframes techBannerPulse {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes techGlow {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+@keyframes romanticBannerFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes flowersBloom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes galaxyBannerMove {
+    0%, 100% { background-position: 0% 50%; }
+    33% { background-position: 100% 0%; }
+    66% { background-position: 0% 100%; }
+}
+
+@keyframes spaceFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(2deg); }
+}
+
+/* ========================================
+   CONTROLES DOS EFEITOS
+   ======================================== */
+
+.effect-radio.selected {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.effect-radio.selected::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 1px;
+}
+
+.banner-radio.selected {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.banner-radio.selected::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 1px;
+}
