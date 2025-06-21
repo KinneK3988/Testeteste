@@ -1,0 +1,157 @@
+/* Estilos Globais e de Reset */
+html, body {
+    height: 100vh;
+    overflow: hidden; /* Prevenir scroll no body */
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hidden { display: none !important; }
+.main-screen { height: 100%; display: flex; flex-direction: column; }
+
+/* Animações */
+.modal-overlay { animation: fadeIn .2s ease-out; }
+.modal-content { animation: slideUp .3s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes photoZoomIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+
+
+/* Safe Area para iOS */
+body {
+    padding-top: env(safe-area-inset-top, 0);
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+#bottom-nav { padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)); }
+
+.modal-header {
+    padding-top: calc(16px + env(safe-area-inset-top, 0px));
+    min-height: calc(60px + env(safe-area-inset-top, 0px));
+}
+
+/* Telas principais */
+#app-header, #friends-header {
+    padding-top: calc(12px + env(safe-area-inset-top, 0px));
+}
+
+/* Modais de tela cheia */
+.fullscreen-modal .modal-content {
+    height: 100vh;
+    width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+}
+
+/* Efeitos de Nome (Gradientes) */
+.name-effect-rainbow { background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: rainbowMove 4s ease-in-out infinite; font-weight: 600; }
+.name-effect-gold { background: linear-gradient(45deg, #ffd700, #ffed4e, #ffb347); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); animation: goldShine 3s ease-in-out infinite; font-weight: 700; }
+.name-effect-neon { color: #00ffff; text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff; animation: neonGlow 2s ease-in-out infinite alternate; font-weight: 600; }
+.name-effect-holographic { background: linear-gradient(45deg, #ff0080, #0080ff, #80ff00); background-size: 400% 400%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: holographicShift 5s ease-in-out infinite; font-weight: 700; }
+.name-effect-sunset { background: linear-gradient(45deg, #ff9a56, #ff6b9d, #f8b500); background-size: 250% 250%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: sunsetFlow 4s ease-in-out infinite; font-weight: 600; }
+
+@keyframes rainbowMove { 0%, 100% { background-position: 0% 50%; } 25% { background-position: 100% 50%; } 50% { background-position: 50% 100%; } 75% { background-position: 0% 100%; } }
+@keyframes goldShine { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes neonGlow { from { text-shadow: 0 0 5px #00ffff; } to { text-shadow: 0 0 20px #00ffff; }}
+@keyframes holographicShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }}
+@keyframes sunsetFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 0%; }}
+
+/* Banners de Nome */
+.name-banner { position: relative; padding: 4px 14px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+.name-banner-heart-pink { background: linear-gradient(45deg, #ff6b9d, #f093fb); }
+.name-banner-stars-gold { background: linear-gradient(45deg, #ffd700, #ffb347); }
+.name-banner-nature-green { background: linear-gradient(45deg, #4ade80, #22c55e); }
+
+
+/* Estilos do Chat com Firebase */
+#chat-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1000;
+    background-color: #111827;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+}
+#chat-screen.show {
+    transform: translateX(0);
+}
+
+.chat-header {
+    background: #1f2937;
+    border-bottom: 1px solid #374151;
+    padding: 12px 16px;
+    flex-shrink: 0;
+}
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column-reverse; /* Mostra mensagens novas embaixo */
+}
+.message-group {
+    display: flex;
+    margin-bottom: 12px;
+    max-width: 85%;
+}
+.message-group.sent { align-self: flex-end; flex-direction: row-reverse; }
+.message-group.received { align-self: flex-start; }
+.message-avatar { width: 32px; height: 32px; border-radius: 50%; margin: 0 8px; flex-shrink: 0; align-self: flex-end; }
+.message-bubble {
+    padding: 10px 14px;
+    border-radius: 18px;
+    word-wrap: break-word;
+    font-size: 15px;
+    line-height: 1.4;
+}
+.message-group.sent .message-bubble { background: #3b82f6; color: white; border-bottom-right-radius: 4px; }
+.message-group.received .message-bubble { background: #374151; color: #e5e7eb; border-bottom-left-radius: 4px; }
+.message-timestamp { font-size: 11px; color: #6b7280; margin-top: 4px; }
+.sent .message-timestamp { text-align: right; }
+
+.chat-input-container {
+    padding: 12px 16px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    background: #1f2937;
+    border-top: 1px solid #374151;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+.chat-input {
+    flex: 1;
+    background: #374151;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 10px 16px;
+    color: white;
+    resize: none;
+    max-height: 120px;
+    min-height: 40px;
+    font-size: 16px;
+}
+.chat-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
+}
+.chat-send-btn {
+    width: 40px; height: 40px;
+    background: #4f46e5;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+.chat-send-btn:disabled { background: #4b5563; cursor: not-allowed; }
+
+/* Status do Usuário */
+.user-status-online { background-color: #10b981; }
+.user-status-offline { background-color: #6b7280; }
