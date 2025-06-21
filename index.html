@@ -924,162 +924,6 @@
     animation: searchPulse 2s infinite;
 }
 </style>
-<!-- Container Principal -->
-<div id="app-container" class="h-screen flex flex-col bg-gray-900 hidden">
-    <!-- Header -->
-    <div class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center justify-between">
-        <h1 class="text-white font-bold text-xl">7Chat</h1>
-        <div class="flex items-center space-x-3">
-            <!-- Foto do usuário -->
-            <div id="user-profile-container" class="w-10 h-10 rounded-full bg-gray-600 border-2 border-gray-500 overflow-hidden cursor-pointer relative">
-                <img id="user-profile-pic" src="" alt="Perfil" class="w-full h-full object-cover hidden">
-                <svg id="user-profile-icon" class="w-6 h-6 text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                </svg>
-            </div>
-            <!-- Botões do header -->
-            <button id="notifications-btn" class="relative p-2 text-gray-400 hover:text-white transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                </svg>
-                <span id="notifications-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- Conteúdo Principal -->
-    <div class="flex-1 flex flex-col">
-        <!-- Lista de Conversas -->
-        <div class="bg-gray-800 border-b border-gray-700 p-4">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-white font-semibold">Conversas</h2>
-                <button id="new-chat-btn" class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700 transition-colors">
-                    Nova Conversa
-                </button>
-            </div>
-            <div class="relative">
-                <input id="search-conversations-input" type="text" placeholder="Buscar conversas..." class="w-full bg-gray-700 text-white px-4 py-2 rounded-lg pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </div>
-        </div>
-        
-        <!-- Lista de Conversas -->
-        <div class="flex-1 overflow-y-auto">
-            <div id="conversations-list" class="space-y-2 p-4">
-                <!-- Conversas aparecerão aqui -->
-            </div>
-            <div id="empty-state" class="flex flex-col items-center justify-center h-64 text-gray-500">
-                <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-                <p class="text-lg font-medium mb-2">Nenhuma conversa ainda</p>
-                <p class="text-sm text-center">Comece uma nova conversa ou aguarde mensagens</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Tela de Login -->
-<div id="login-screen" class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center justify-center p-4">
-    <div class="bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md p-8">
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-white mb-2">7Chat</h1>
-            <p class="text-gray-400">Conecte-se com seus amigos</p>
-        </div>
-        
-        <form id="login-form" class="space-y-6">
-            <div>
-                <label class="block text-gray-300 text-sm font-medium mb-2">Email</label>
-                <input id="email-input" type="email" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="seu@email.com">
-            </div>
-            
-            <div>
-                <label class="block text-gray-300 text-sm font-medium mb-2">Senha</label>
-                <input id="password-input" type="password" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="••••••••">
-            </div>
-            
-            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 font-medium">
-                Entrar
-            </button>
-        </form>
-        
-        <div class="mt-6 text-center">
-            <button id="main-guest-login-btn" class="text-blue-400 hover:text-blue-300 font-semibold">
-                Entrar como convidado
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- Tela de Amigos -->
-<div id="friends-screen" class="hidden h-screen flex flex-col bg-gray-900">
-    <!-- Header da tela de amigos -->
-    <div class="bg-gray-800 border-b border-gray-700 px-4 py-3">
-        <h1 class="text-white font-bold text-xl">Amigos</h1>
-    </div>
-    
-    <!-- Conteúdo da tela de amigos -->
-    <div class="flex-1 flex flex-col">
-        <!-- Aqui vai o conteúdo da tela de amigos -->
-        <div class="flex-1 flex items-center justify-center text-gray-500">
-            <p>Tela de amigos em desenvolvimento...</p>
-        </div>
-    </div>
-</div>
-
-<!-- Navegação Inferior -->
-<nav id="bottom-nav" class="hidden bg-gray-800 border-t border-gray-700">
-    <div class="flex">
-        <button id="nav-rooms" class="flex-1 flex flex-col items-center justify-center py-3 text-blue-500">
-            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-            </svg>
-            <span class="text-xs">Conversas</span>
-        </button>
-        
-        <button id="nav-friends" class="flex-1 flex flex-col items-center justify-center py-3 text-gray-400">
-            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
-            </svg>
-            <span class="text-xs">Amigos</span>
-        </button>
-        
-        <button id="nav-settings" class="flex-1 flex flex-col items-center justify-center py-3 text-gray-400">
-            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            </svg>
-            <span class="text-xs">Configurações</span>
-        </button>
-    </div>
-</nav>
-
-<!-- ADICIONAR AQUI TODOS OS MODAIS QUE VOCÊ TINHA -->
-<!-- Modal de Configurações -->
-<div id="settings-modal" class="hidden modal fixed inset-0 bg-black bg-opacity-50 z-50">
-    <!-- Conteúdo do modal de configurações -->
-</div>
-
-<!-- Scripts JavaScript -->
-<script>
-// TODO: Adicionar todo o JavaScript aqui
-console.log('7Chat carregado!');
-
-// Inicialização básica
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Inicializando aplicação...');
-    
-    // Mostrar tela de login inicialmente
-    document.getElementById('login-screen').classList.remove('hidden');
-});
-</script>
-
-</body>
-</html>
-</head>
-<body>
 
 <style>
 /* Sistema de Conversas Privadas */
@@ -2601,9 +2445,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('📱 7Chat carregado!');
     
     // Aguardar que tudo carregue
-    setTimeout(() => {        try {
-            if (!window.conversationManager) {
-                window.conversationManager = new ConversationManager();
+    setTimeout(() => {
+        try {
+            if (!conversationManager) {
+                conversationManager = new ConversationManager();
                 conversationManager.init();
             }
         } catch (error) {
@@ -2624,11 +2469,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Auth object:', auth);
 
             bindUI();
-            if (typeof handleAuthChange === 'function') {
-    handleAuthChange(user);
-} else {
-    console.warn('handleAuthChange não está definida ainda');
-}
+            unsubscribeAuth = auth.onAuthStateChanged(handleAuthChange);
             
             console.log('✅ Event listeners configurados');
             
@@ -2636,29 +2477,29 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('❌ Erro ao inicializar aplicação:', error);
             showNotification('Erro de conexão. Tente recarregar a página.', 'error');
         }
-    }    function bindUI() {
+    }
+
+    function bindUI() {
         console.log('🔧 Configurando event listeners...');
         
         // Login
         const loginForm = document.getElementById('login-form');
         if (loginForm) {
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('email-input').value;
-                const password = document.getElementById('password-input').value;
-                handleLogin(e);
-            });
+            loginForm.addEventListener('submit', handleLogin);
             console.log('✅ Formulário de login configurado');
+        } else {
+            console.error('❌ Formulário de login não encontrado!');
         }
-
-        // Login como convidado
-        const guestLoginBtn = document.getElementById('main-guest-login-btn');
-        if (guestLoginBtn) {
-            guestLoginBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                loginAsGuest();
+        
+        const guestBtn = document.getElementById('main-guest-login-btn');
+        if (guestBtn) {
+            guestBtn.addEventListener('click', () => {
+                console.log('🔄 Tentando login como convidado...');
+                auth.signInAnonymously();
             });
             console.log('✅ Botão de convidado configurado');
+        } else {
+            console.error('❌ Botão de convidado não encontrado!');
         }
 
         // Navegação
@@ -2695,37 +2536,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Inicializar todas as funções de perfil APÓS configurar os event listeners básicos
-        try {
-            // initializeProfile(); // Comentar esta linha temporariamente
-            if (typeof initializeEditName === 'function') {
-    if (typeof initializeEditName === 'function') initializeEditName();
-} else {
-    console.warn('initializeEditName não está definida ainda');
-}
-            if (typeof initializeEditStatus === 'function') initializeEditStatus();
-            if (typeof initializeNameEffects === 'function') initializeNameEffects();
-            if (typeof initializeNameBanners === 'function') initializeNameBanners();
-            if (typeof initializeProfileDetail === 'function') initializeProfileDetail();
-            console.log('✅ Todas as funções de perfil inicializadas com sucesso');
-        } catch (error) {
-            console.error('❌ Erro ao inicializar funções de perfil:', error);
-        }
-    }// INICIALIZAR APLICAÇÃO
+        // Inicializar busca
+        initializeSearch();
+
+        // Inicializar foto do usuário
+        initializeUserPhoto();
+
+        // Inicializar configurações
+        initializeSettings();
+
+        initializeProfile();
+        initializeEditName();
+        initializeEditStatus();
+        initializeNameEffects();
+        initializeNameBanners();
+        initializeProfileDetail();
+    }
+
+    // INICIALIZAR APLICAÇÃO
     main();
 });
-
-// Função placeholder para search
-function initializeSearch() {
-    console.log('🔍 Sistema de busca inicializado');
-    // TODO: Implementar sistema de busca
-}
-
-// Função placeholder para fotos de usuário
-function initializeUserPhoto() {
-    console.log('📸 Sistema de fotos de usuário inicializado');
-    // TODO: Implementar sistema de fotos
-}
 </script>
     function renderAllConversations() {
         const conversationsList = document.getElementById('all-conversations-list');
@@ -2765,7 +2595,41 @@ function initializeUserPhoto() {
                     </div>
                 </div>
             `).join('');
-        }    }
+        }
+    }
+
+    // Inicializar busca
+    function initializeSearch() {
+        const searchInput = document.getElementById('search-conversations-input');
+        
+        searchInput?.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const allConversations = document.querySelectorAll('[data-conversation-id]');
+            
+            if (searchTerm.length > 0) {
+                allConversations.forEach(conv => {
+                    const nameElement = conv.querySelector('.text-white.font-medium');
+                    const messageElement = conv.querySelector('.text-gray-400.text-sm');
+                    
+                    if (nameElement && messageElement) {
+                        const name = nameElement.textContent.toLowerCase();
+                        const lastMessage = messageElement.textContent.toLowerCase();
+                        
+                        if (name.includes(searchTerm) || lastMessage.includes(searchTerm)) {
+                            conv.style.display = 'flex';
+                        } else {
+                            conv.style.display = 'none';
+                        }
+                    }
+                });
+            } else {
+                // Mostrar todas as conversas
+                allConversations.forEach(conv => {
+                    conv.style.display = 'flex';
+                });
+            }
+        });
+    }
 
     // Clique nas conversas
     function initializeConversationClicks() {
@@ -2983,7 +2847,21 @@ function initializeUserPhoto() {
             
         } catch (error) {
             console.error('❌ Erro ao salvar foto:', error);
-            showNotification(error.message || 'Erro ao salvar foto', 'error');        }
+            showNotification(error.message || 'Erro ao salvar foto', 'error');
+        }
+    }
+
+    function initializeUserPhoto() {
+        const photoUploadInput = document.getElementById('photo-upload-input');
+        
+        photoUploadInput?.addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                await updateUserPhoto(file);
+                // Limpar input para permitir selecionar a mesma foto novamente
+                this.value = '';
+            }
+        });
     }
 
     // Event listener atualizado para seleção de foto (ID alternativo)
@@ -5257,11 +5135,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Atualizar botão
                 e.target.textContent = 'Enviado';
-                e.target.classList.remove('bg-blue-600', 'hover:bg-blue-700');                e.target.classList.add('bg-gray-600');
+                e.target.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                e.target.classList.add('bg-gray-600');
             }
         });
     }
-});
+    
+ 
+    
+    // Aguardar inicialização se necessário
+    if (!conversationManager.isInitialized) {
+        setTimeout(() => startChat(userName, userAvatar, userStatus), 500);
+        return;
+    }
+    
+    conversationManager.openChat(userName, userAvatar, userStatus);
+}
 
 // Função para inicializar conversa quando aceita amizade
 function initializeConversationForFriend(friendName, friendAvatar = null) {
