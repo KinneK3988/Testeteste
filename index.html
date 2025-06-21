@@ -5107,25 +5107,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Enviar solicitação
                 await sendFriendRequest(userId, userName);
-                  // Atualizar botão
+                
+                // Atualizar botão
                 e.target.textContent = 'Enviado';
                 e.target.classList.remove('bg-blue-600', 'hover:bg-blue-700');
                 e.target.classList.add('bg-gray-600');
             }
         });
     }
-}); // Fechar DOMContentLoaded
-
-// Função startChat corrigida
-function startChat(userName, userAvatar = null, userStatus = 'online') {
-    console.log('Iniciando chat com:', userName);
     
-    // Verificar se o conversation manager existe
-    if (!conversationManager) {
-        console.log('ConversationManager não existe, aguardando...');
-        setTimeout(() => startChat(userName, userAvatar, userStatus), 1000);
-        return;
-    }
+ 
     
     // Aguardar inicialização se necessário
     if (!conversationManager.isInitialized) {
