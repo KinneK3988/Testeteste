@@ -1912,52 +1912,9 @@
 
     // Variáveis globais
     let currentUser = null;
-    let unsubscribeAuth = null;    console.log('🔥 Firebase inicializado com sucesso!');
+    let unsubscribeAuth = null;
 
-    // Declarar variáveis globais necessárias
-    let conversationManager = null;
-
-    // Classe ConversationManager
-    class ConversationManager {
-        constructor() {
-            this.conversations = {};
-            this.currentChat = null;
-            this.isInitialized = false;
-        }
-        
-        init() {
-            console.log('🔄 Inicializando ConversationManager...');
-            this.loadConversations();
-            this.setupEventListeners();
-            this.isInitialized = true;
-            console.log('✅ ConversationManager inicializado');
-        }
-        
-        loadConversations() {
-            // Implementação básica - você pode expandir conforme necessário
-            const saved = localStorage.getItem('conversations');
-            if (saved) {
-                this.conversations = JSON.parse(saved);
-            }
-        }
-        
-        saveConversations() {
-            localStorage.setItem('conversations', JSON.stringify(this.conversations));
-        }
-        
-        setupEventListeners() {
-            // Event listeners básicos
-        }
-        
-        renderConversations() {
-            // Renderizar lista de conversas
-        }
-        
-        openChat(userName, userAvatar, userStatus) {
-            console.log(`🗨️ Abrindo chat com ${userName}`);
-            // Implementar abertura do chat
-        }
-    }
+    console.log('🔥 Firebase inicializado com sucesso!');
 
     // --- FUNÇÕES AUXILIARES ---
     function showNotification(message, type = 'info') {
@@ -2029,35 +1986,16 @@
             modal.classList.remove('hidden');
             setTimeout(() => input.focus(), 100);
         });
-    }    function updateNav(activeElement) {
+    }
+
+    function updateNav(activeElement) {
         const navItems = document.querySelectorAll('#nav-friends, #nav-rooms, #nav-settings');
         navItems.forEach(item => {
             item.classList.remove('text-indigo-400', 'border-t-2', 'border-indigo-500');
             item.classList.add('text-gray-400');
         });
-        activeElement.classList.remove('text-gray-400');
+          activeElement.classList.remove('text-gray-400');
         activeElement.classList.add('text-indigo-400', 'border-t-2', 'border-indigo-500');
-    }
-
-    // Função handleLogin corrigida (no escopo global)
-    async function handleLogin(e) {
-        e.preventDefault();
-        console.log('🔄 Tentativa de login iniciada...');
-        
-        try {
-            const email = document.getElementById('email-input').value;
-            const password = document.getElementById('password-input').value;
-            
-            console.log('📧 Email:', email);
-            console.log('🔑 Senha fornecida:', password ? 'Sim' : 'Não');
-            
-            const result = await auth.signInWithEmailAndPassword(email, password);
-            console.log('✅ Login realizado com sucesso:', result.user.uid);
-            
-        } catch (err) {
-            console.error('❌ Erro no login:', err);
-            showNotification("Falha no login: " + err.message, "error");
-        }
     }
 </script>
 
@@ -2539,44 +2477,30 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('❌ Erro ao inicializar aplicação:', error);
             showNotification('Erro de conexão. Tente recarregar a página.', 'error');
         }
-    }    function bindUI() {
+    }
+
+    function bindUI() {
         console.log('🔧 Configurando event listeners...');
         
-        // Login form - corrigido para usar a função anônima diretamente
+        // Login
         const loginForm = document.getElementById('login-form');
         if (loginForm) {
-            loginForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                console.log('🔄 Tentativa de login iniciada...');
-                
-                try {
-                    const email = document.getElementById('email-input').value;
-                    const password = document.getElementById('password-input').value;
-                    
-                    console.log('📧 Email:', email);
-                    console.log('🔑 Senha fornecida:', password ? 'Sim' : 'Não');
-                    
-                    const result = await auth.signInWithEmailAndPassword(email, password);
-                    console.log('✅ Login realizado com sucesso:', result.user.uid);
-                    
-                } catch (err) {
-                    console.error('❌ Erro no login:', err);
-                    showNotification("Falha no login: " + err.message, "error");
-                }
-            });
+            loginForm.addEventListener('submit', handleLogin);
             console.log('✅ Formulário de login configurado');
         } else {
             console.error('❌ Formulário de login não encontrado!');
         }
         
-        // Guest login
         const guestBtn = document.getElementById('main-guest-login-btn');
         if (guestBtn) {
             guestBtn.addEventListener('click', () => {
                 console.log('🔄 Tentando login como convidado...');
                 auth.signInAnonymously();
             });
-            console.log('✅ Botão de convidado configurado');        }
+            console.log('✅ Botão de convidado configurado');
+        } else {
+            console.error('❌ Botão de convidado não encontrado!');
+        }
 
         // Navegação
         const navFriends = document.getElementById('nav-friends');
@@ -3089,7 +3013,8 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 console.error('Erro ao carregar dados do usuário:', error);
             }
-        }        // Carregar dados do usuário após login
+        }
+          // Carregar dados do usuário após login - VERSÃO CORRIGIDA        
         async function loadUserDataOnLogin() {            
             try {
                 console.log('👤 Carregando dados completos do usuário...');
@@ -3146,12 +3071,31 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     console.log('✅ Sistema completo inicializado');
                 }, 1500);
-                  } catch (error) {
+                
+            } catch (error) {
                 console.error('❌ Erro ao carregar dados do usuário:', error);
             }
         }
         
-        async function handleAuthChange(user) {
+        async function handleLogin(e) {
+        e.preventDefault();
+        console.log('🔄 Tentativa de login iniciada...');
+        
+        try {
+            const email = document.getElementById('email-input').value;
+            const password = document.getElementById('password-input').value;
+            
+            console.log('📧 Email:', email);
+            console.log('🔑 Senha fornecida:', password ? 'Sim' : 'Não');
+            
+            const result = await auth.signInWithEmailAndPassword(email, password);
+            console.log('✅ Login realizado com sucesso:', result.user.uid);
+            
+        } catch (err) {
+            console.error('❌ Erro no login:', err);
+            showNotification("Falha no login: " + err.message, "error");        }
+    }    
+    async function handleAuthChange(user) {
         const bottomNav = document.getElementById('bottom-nav');
         
         if (user) {
