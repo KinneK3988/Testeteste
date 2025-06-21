@@ -2624,7 +2624,11 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Auth object:', auth);
 
             bindUI();
-            unsubscribeAuth = auth.onAuthStateChanged(handleAuthChange);
+            if (typeof handleAuthChange === 'function') {
+    handleAuthChange(user);
+} else {
+    console.warn('handleAuthChange não está definida ainda');
+}
             
             console.log('✅ Event listeners configurados');
             
@@ -2693,7 +2697,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Inicializar todas as funções de perfil APÓS configurar os event listeners básicos
         try {
-            initializeProfile();
+            // initializeProfile(); // Comentar esta linha temporariamente
             initializeEditName();
             initializeEditStatus();
             initializeNameEffects();
