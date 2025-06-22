@@ -1,0 +1,23 @@
+{
+    "name": "ChatApp",
+    "short_name": "ChatApp",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2563eb",
+    "description": "Um aplicativo de chat simples feito com Firebase.",
+    "icons": [
+        {
+            "src": "https://placehold.co/192x192/2563eb/ffffff?text=Chat",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "https://placehold.co/512x512/2563eb/ffffff?text=Chat",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any maskable"
+        }
+    ]
+}
